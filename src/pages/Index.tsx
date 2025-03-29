@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ScoreCard from '@/components/ScoreCard';
 import { Separator } from '@/components/ui/separator';
 import { ScoreDetail } from '@/components/ScoreBreakdown';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 const Index = () => {
   // Mock data for credit score
