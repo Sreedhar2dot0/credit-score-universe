@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ScoreCard from '@/components/ScoreCard';
 import { Separator } from '@/components/ui/separator';
 import { ScoreDetail } from '@/components/ScoreBreakdown';
-import { toast } from 'sonner';
+import { toast } from 'sonner';  // Changed from importing from sonner.tsx to directly from sonner
 import ScoreBar from '@/components/ScoreBar';
 
 const Index = () => {
