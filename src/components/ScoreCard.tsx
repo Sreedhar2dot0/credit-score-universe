@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import ScoreGauge from './ScoreGauge';
+import ScoreBar from './ScoreBar';
 import ScoreBreakdown, { ScoreDetail } from './ScoreBreakdown';
 import { cn } from '@/lib/utils';
 
@@ -64,7 +64,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({
       </CardHeader>
       <CardContent>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-          <ScoreGauge 
+          <ScoreBar 
             score={score} 
             maxScore={maxScore} 
             ratingText={ratingText} 

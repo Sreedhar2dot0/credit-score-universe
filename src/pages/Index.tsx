@@ -6,6 +6,7 @@ import ScoreCard from '@/components/ScoreCard';
 import { Separator } from '@/components/ui/separator';
 import { ScoreDetail } from '@/components/ScoreBreakdown';
 import { toast } from 'sonner';
+import ScoreBar from '@/components/ScoreBar';
 
 const Index = () => {
   // Mock data for credit score
@@ -164,26 +165,24 @@ const Index = () => {
         
         <TabsContent value="summary" className="space-y-6 animate-in fade-in">
           {/* Overall Score Card */}
-          <Card className="border-l-4 border-credit-blue shadow-md animate-pulse-glow">
+          <Card className="border-l-4 border-credit-blue shadow-md">
             <CardHeader>
               <CardTitle>Overall Credit Score</CardTitle>
               <CardDescription>Combined score across all categories</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <ScoreCard
-                    title="Total Credit Score"
+              <div className="flex flex-col md:flex-row items-start gap-8">
+                <div className="w-full md:w-2/5">
+                  <ScoreBar
                     score={mockTotalScore}
                     maxScore={mockMaxScore}
                     ratingText={totalRating.text}
                     ratingColor={totalRating.color}
-                    scoreDetails={[]}
-                    className="md:w-[350px]"
+                    size="lg"
                   />
                 </div>
                 
-                <div className="w-full space-y-4">
+                <div className="w-full md:w-3/5 space-y-4">
                   <div className="p-4 bg-gray-50 rounded-lg border">
                     <h3 className="font-medium text-credit-darkBlue mb-2">Score Summary</h3>
                     <p className="text-sm text-gray-700">
@@ -220,10 +219,16 @@ const Index = () => {
                   const rating = getRating(scorecard.score, scorecard.maxScore);
                   return (
                     <div key={scorecard.id} className="flex items-center p-4 rounded-lg border hover:shadow-sm transition-shadow">
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: `${rating.color}20` }}>
-                        <span className="text-xl font-bold" style={{ color: rating.color }}>{scorecard.score}</span>
+                      <div className="w-12 h-3 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                        <div 
+                          className="h-full rounded-full" 
+                          style={{ 
+                            width: `${(scorecard.score / scorecard.maxScore) * 100}%`,
+                            backgroundColor: rating.color
+                          }}
+                        ></div>
                       </div>
-                      <div className="ml-4">
+                      <div>
                         <h3 className="font-medium">{scorecard.title}</h3>
                         <p className="text-sm text-gray-500">
                           {scorecard.score} / {scorecard.maxScore} • {rating.text}
